@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews.js"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import 'bulma/css/bulma.min.css'
 
 export const WhoHasWhat = () => (
     <>
