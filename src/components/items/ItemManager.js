@@ -28,8 +28,8 @@ export const createItem = (item) => {
 }
 
 
-export const updateItem = (item) => {
-    return fetch(`http://localhost:8000/items/${item.id}`, {
+export const updateItem = (item, id) => {
+    return fetch(`http://localhost:8000/items/${id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -92,3 +92,4 @@ export const createRentalItem = (item) => {
      })
         .then(getRentedItems)
 }
+

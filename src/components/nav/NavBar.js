@@ -11,10 +11,10 @@ export const NavBar = () => {
             <Link className="nav-link" to="/users">Users</Link>
             </li>
             <li className="navbar__item">
-            <Link className="nav-link" to="/">Items</Link>
+            <Link className="nav-link" to="/items">Items</Link>
             </li>
             <li className="navbar__item">
-                Navigation link
+            <Link className="nav-link" to="/">Home</Link>
             </li>
             {
                 (localStorage.getItem("token") !== null) ?

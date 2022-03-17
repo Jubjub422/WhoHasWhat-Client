@@ -10,14 +10,14 @@ import { getItems, getRentedItems } from "../items/ItemManager"
 export const Home = () => {
     const [ user, setUser ] = useState({})
     const [items, setItems] = useState([])
-    const [rentedItems, setRentedItems] = ([])
+    const [rentedItems, setRentedItems] = useState([])
 
     useEffect(() => {
         getItems().then(data => setItems(data))
         getCurrentLender().then(u => setUser(u))
         getRentedItems().then(r => setRentedItems(r))
     }, [])
-
+    
 
     return(<>
         {
