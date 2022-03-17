@@ -5,41 +5,6 @@ import { getCurrentLender } from "../users/UserManager"
 import "./NavBar.css"
 
 
-// export const NavBar = () => {
-//     const history = useHistory()
-//     return (
-//         <ul className="navbar">
-//             {/* <li className="navbar__item">
-//             <Link className="nav-link" to="/users">Users</Link>
-//             </li> */}
-//             <li className="navbar__item">
-//             <Link className="nav-link" to="/items">Items</Link>
-//             </li>
-//             <li className="navbar__item">
-//             <Link className="nav-link" to="/">Home</Link>
-//             </li>
-//             {
-//                 (localStorage.getItem("token") !== null) ?
-//                     <li className="nav-item">
-//                         <button className="nav-link fakeLink"
-//                             onClick={() => {
-//                                 localStorage.removeItem("token")
-//                                 history.push({ pathname: "/" })
-//                             }}
-//                         >Logout</button>
-//                     </li> :
-//                     <>
-//                         <li className="nav-item">
-//                             <Link className="nav-link" to="/login">Login</Link>
-//                         </li>
-//                         <li className="nav-item">
-//                             <Link className="nav-link" to="/register">Register</Link>
-//                         </li>
-//                     </>
-//             }        </ul>
-//     )
-// }
-
 export const NavBar = () => {
     const history = useHistory()
     const navbar = useRef()
