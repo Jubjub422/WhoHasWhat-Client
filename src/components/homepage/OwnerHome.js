@@ -1,11 +1,17 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { deleteItem } from "../items/ItemManager"
 import { Link } from "react-router-dom"
+import { getRentalQueue } from "./RequestManager"
 
 
 
 export const OwnerHome = ({items, user, setItems}) => {
-
+    const [rentalRequests, setRentalRequests] = useState([])
+    
+    useEffect(() => {
+        getRentalQueue().then(data => setRentalRequests(data))
+        
+    }, [])
 
     const ownerItems = () => {
         const ownerArray = []
@@ -56,6 +62,19 @@ export const OwnerHome = ({items, user, setItems}) => {
                 }else{ return ""}
             })
         }
+        </section>
+        <section className="requested_items">
+            <h3>These Items have been requested to rent.</h3>
+            {
+                rentalRequests.length < 1 ? rentalRequests.map((item) => {
+                    return  <section key={`item--${item.id}`} className="item">
+                            <div className="item__image">{item.item_image}</div>
+                            <div className="item__name">{item.name}</div>
+                            <div className="item__condition">Condition level is {item.condition?.condition}</div>
+                            </section>
+                })
+                :"You have no loaned items currently."
+            }
         </section>
         
         </>

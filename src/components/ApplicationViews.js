@@ -8,10 +8,7 @@ import { Home } from "./homepage/HomeHub"
 
 export const ApplicationViews = () => {
         return <>
-            <main style={{
-                margin: "5rem 2rem",
-                backgroundColor: "lightgoldenrodyellow"
-            }}>
+            
                 {/* <Route exact path="/items/new">
                     <ItemForm />
                 </Route>
@@ -27,6 +24,6 @@ export const ApplicationViews = () => {
                 {/* <Route exact path="/events">
                     <UserList />
                 </Route> */}
-            </main>
+            
         </>
     }
