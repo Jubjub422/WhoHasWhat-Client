@@ -1,6 +1,6 @@
 export const getConditions = () => {
     return fetch("http://localhost:8000/conditions", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -38,5 +38,5 @@ export const deleteCategory = conditionId => {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    
+
 };

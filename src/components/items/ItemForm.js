@@ -9,8 +9,8 @@ export const ItemForm = () => {
     const history = useHistory()
     const [categories, setCategories] = useState([])
     const [conditions, setConditions] = useState([])
-    
-    // const [string, setString ] = useState("")
+
+
     const [item, setItem] = useState({
         name: "",
         owner: "",
@@ -23,20 +23,6 @@ export const ItemForm = () => {
     })
 
 
-    // const getBase64 = (file, callback) => {
-    //     const reader = new FileReader();
-    //     reader.addEventListener('load', () => callback(reader.result));
-    //     reader.readAsDataURL(file);
-    //   }
-    
-    //   const createImageString = (event) => {
-    //     getBase64(event.target.files[0], (base64ImageString) => {
-    //         console.log("Base64 of file is", base64ImageString);
-    //         // Update a component state variable to the value of base64ImageString
-    //         setString(base64ImageString)
-    //     });
-    //   }
-  
 
     useEffect(
         () => {
@@ -45,10 +31,10 @@ export const ItemForm = () => {
         },
         []
     )
-    
+
     const submitNewItem = (evt) => {
         evt.preventDefault()
-        
+
         const newItem = {
             name: item.name,
             owner: item.owner,
@@ -58,11 +44,11 @@ export const ItemForm = () => {
             item_image: item.item_image,
             categories: Array.from(item.categories)
         }
-        
+
 
         createItem(newItem)
-            .then(() => {history.push("/")})
-            
+            .then(() => { history.push("/") })
+
     }
 
     return (
@@ -101,17 +87,14 @@ export const ItemForm = () => {
                             } />
                     </div>
                 </div>
-                {/* <section>
-                  <input type="file" id="image" onChange={createImageString} />
-                  <input type="hidden" name="id" value={string} />
-                </section> */}
+
                 <div className="field my-5">
                     <label className="label">Charge per day?</label>
                     <div className="control">
                         <input
                             type="number" min="0.00" max="99.99"
                             className="number"
-                            placeholder="00.00" 
+                            placeholder="00.00"
                             onChange={
                                 (evt) => {
                                     const copy = { ...item }
@@ -120,14 +103,14 @@ export const ItemForm = () => {
                                 }
                             } ></input>
                     </div>
-                </div>    
+                </div>
                 <div className="field my-5">
                     <label className="label">Charge per week?</label>
                     <div className="control">
                         <input
                             type="number" min="0.00" max="999.99"
                             className="number"
-                            placeholder="000.00" 
+                            placeholder="000.00"
                             onChange={
                                 (evt) => {
                                     const copy = { ...item }
@@ -185,7 +168,7 @@ export const ItemForm = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <button className="button is-link my-5 has-text-weight-bold" onClick={submitNewItem}>Submit</button>
                 </div>

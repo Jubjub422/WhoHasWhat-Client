@@ -1,6 +1,6 @@
 export const getRentalQueue = () => {
     return fetch("http://localhost:8000/rentalrequests", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -8,7 +8,7 @@ export const getRentalQueue = () => {
 }
 export const getSingleRentalQueue = (id) => {
     return fetch(`http://localhost:8000/rentalrequests/${id}`, {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -17,13 +17,13 @@ export const getSingleRentalQueue = (id) => {
 
 export const createRentalRequest = (item) => {
     return fetch("http://localhost:8000/rentalrequests", {
-        method: "POST", 
-        headers:{
+        method: "POST",
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(item)
-     })
+    })
         .then(getRentalQueue)
 }
 
@@ -43,9 +43,33 @@ export const updateRentalRequest = (item) => {
 export const deleteRentalRequest = (item) => {
     return fetch(`http://localhost:8000/rentalrequests/${item.id}`, {
         method: "DELETE",
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    .then(getRentalQueue)
+        .then(getRentalQueue)
+}
+
+export const approveRentalRequest = (request) => {
+    return fetch(`http://localhost:8000/rentalrequests/${request.id}/approve`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+    })
+        .then(getRentalQueue)
+}
+
+export const returnRental = (request) => {
+    return fetch(`http://localhost:8000/rentalrequests/${request.id}/return_item`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+    })
+        .then(getRentalQueue)
 }

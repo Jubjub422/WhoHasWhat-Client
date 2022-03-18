@@ -24,3 +24,13 @@ export const getCurrentLender = () => {
     })
         .then(res => res.json())
 }
+
+export const changeToOwner = (lender) => {
+    return fetch(`http://localhost:8000/lenders/${lender.id}/become_owner`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(res => res.json())
+}

@@ -1,6 +1,6 @@
 export const getItems = () => {
     return fetch("http://localhost:8000/items", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -8,7 +8,7 @@ export const getItems = () => {
 }
 export const getSingleItem = (id) => {
     return fetch(`http://localhost:8000/items/${id}`, {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -17,13 +17,13 @@ export const getSingleItem = (id) => {
 
 export const createItem = (item) => {
     return fetch("http://localhost:8000/items", {
-        method: "POST", 
-        headers:{
+        method: "POST",
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(item)
-     })
+    })
         .then(getItems)
 }
 
@@ -43,16 +43,16 @@ export const updateItem = (item, id) => {
 export const deleteItem = (item) => {
     return fetch(`http://localhost:8000/items/${item.id}`, {
         method: "DELETE",
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    .then(getItems)
+        .then(getItems)
 }
 
 export const getRentedItems = () => {
     return fetch("http://localhost:8000/renteditems", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
@@ -62,11 +62,11 @@ export const getRentedItems = () => {
 export const deleteRentedItem = (item) => {
     return fetch(`http://localhost:8000/renteditems/${item.id}`, {
         method: "DELETE",
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    .then(getRentedItems)
+        .then(getRentedItems)
 }
 
 export const updateRentedItem = (item) => {
@@ -83,13 +83,21 @@ export const updateRentedItem = (item) => {
 
 export const createRentalItem = (item) => {
     return fetch("http://localhost:8000/rentalitems", {
-        method: "POST", 
-        headers:{
+        method: "POST",
+        headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(item)
-     })
+    })
         .then(getRentedItems)
 }
 
+export const getItemsByCategory = (categoryId) => {
+    return fetch(`http://localhost:8000/items?category_id=${categoryId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(res => res.json())
+}
