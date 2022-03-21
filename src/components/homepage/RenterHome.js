@@ -36,7 +36,7 @@ export const RenterHome = ({ items, rentedItems, user, setItems, setRentedItems 
                 {
                     rentalRequests.map((request) => {
 
-                        return (request.renter.user.id === user.id && request.returned === false ?
+                        return (request.renter.id === user.id && request.returned === false ?
                             <section key={`item--${request.item.id}`} className="notification is-success p-3 has-text-weight-medium">
                                 <div className="item__image"><img src={request.item.item_image} className="image is-128x128 mr-3"></img></div>
                                 <div className="item__name">{request.item.name}</div>

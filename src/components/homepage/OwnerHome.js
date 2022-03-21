@@ -50,7 +50,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
                             <div className="item__condition">Condition level is {item.condition?.condition}</div>
                             <div className="item__category"> Categorized as : {item.categories?.map(c => <span key={c.id}>{c.name}</span>).reduce((prev, curr) => [prev, ', ', curr])}</div>
                             <div>
-                                <Link className="nav-link" to={`/items/${item.id}`}>Update Item?</Link>
+                                <Link className="nav-link" to={`/items/update/${item.id}`}>Update Item?</Link>
                             </div>
                             <button className="btn btn-2 btn-sep icon-create"
                                 onClick={() => {

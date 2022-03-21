@@ -41,7 +41,7 @@ export const Login = () => {
                 <button className="delete" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <form className="column mt-6 is-two-thirds" onSubmit={handleLogin}>
-                <h1 className="title">WHo Has What?</h1>
+                <h1 className="title">Who Has What?</h1>
                 <h2 className="subtitle pt-2">Please sign in</h2>
                 <fieldset className="field mb-5">
                     <label htmlFor="inputUsername" className="label"> Username address </label>
