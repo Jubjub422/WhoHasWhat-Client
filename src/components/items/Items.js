@@ -69,7 +69,7 @@ export const ItemList = () => {
                                 }
                                 {
                                     item.rented_currently === true ?
-                                        <p>Item is currently rented!</p>
+                                        <p className="has-background-info">Item is currently rented!</p>
                                         : ""
                                 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { deleteItem } from "../items/ItemManager"
 import { Link } from "react-router-dom"
-import { approveRentalRequest, getRentalQueue, returnRental } from "./RequestManager"
+import { approveRentalRequest, getRentalQueue, returnRental, deleteRentalRequest } from "./RequestManager"
 
 
 
@@ -24,7 +24,8 @@ export const OwnerHome = ({ items, user, setItems }) => {
         })
         return ownerArray
     }
-
+    console.log(user)
+    console.log(rentalRequests)
     const returnRentedItem = (request) => {
 
         returnRental(request)
@@ -44,7 +45,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
                     ownerItems().map((item) => {
 
                         return (<section key={`item--${item.id}`} className="notification is-success p-3 has-text-weight-medium">
-                            <div className="item__image">{item.item_image}</div>
+                            <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>                            
                             <div className="item__name">{item.name}</div>
                             <div className="item__prices">Item is currently rented? {item.rented_currently ? "Yes" : "No"}</div>
                             <div className="item__condition">Condition level is {item.condition?.condition}</div>
@@ -52,7 +53,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
                             <div>
                                 <Link className="nav-link" to={`/items/update/${item.id}`}>Update Item?</Link>
                             </div>
-                            <button className="btn btn-2 btn-sep icon-create"
+                            <button className="button is-small is-danger"
                                 onClick={() => {
                                     deleteItem(item).then(setItems)
                                 }}
@@ -71,7 +72,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
                 ownerItems().map((item) => {
                     if (item.rented_currently === true) {
                         return <section key={`item--${item.id}`} className="notification is-success p-3 has-text-weight-medium">
-                            <div className="item__image">{item.item_image}</div>
+                            <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>
                             <div className="item__name">{item.name}</div>
                             <div className="item__condition">Condition level is {item.condition?.condition}</div>
                             <div className="item__category"> Categorized as : {item.categories?.map(c => c.name)}</div>
@@ -88,13 +89,13 @@ export const OwnerHome = ({ items, user, setItems }) => {
             {
                 rentalRequests.map((request) => {
 
-                    return (request.renter.user.id === user.id && request.returned === false ?
+                    return (request.renter.user.id === user.user.id && request.returned === false ?
                         <section key={`item--${request.item.id}`} className="notification is-success p-3 has-text-weight-medium">
                             <div className="item__image"><img src={request.item.item_image} className="image is-128x128 mr-3"></img></div>
                             <div className="item__name">{request.item.name}</div>
                             <div className="item__condition">Condition level is {request.item.condition?.condition}</div>
                             <div className="item__category"> Categorized as : {request.item.categories?.map(c => c.name)}</div>
-                            <button className="btn btn-2 btn-sep icon-create"
+                            <button className="button is-small is-info"
                                 onClick={() => {
                                     returnRentedItem(request)
                                 }}
@@ -116,13 +117,16 @@ export const OwnerHome = ({ items, user, setItems }) => {
                         request.returned === false ?
                             request.approved === false ?
                                 <section key={`item--${request.item.id}`} className="notification is-success p-3 has-text-weight-medium">
-                                    <div className="item__image">{request.item.item_image}</div>
+                                    <div className="item__image"><img src={request.item.item_image} className="image is-128x128 mr-3"></img></div>
                                     <div className="item__name">{request.item.name}</div>
                                     <div className="item__condition">Condition level is {request.item.condition?.condition}</div>
                                     <div className="item__category"> Categorized as : {request.item.categories?.map(c => c.name)}</div>
-                                    <button className="btn btn-3 btn-sep icon-create" onClick={() => {
+                                    <button className="button is-small is-info" onClick={() => {
                                         approveRentalRequest(request).then(() => getRentalQueue().then(data => setRentalRequests(data)))
                                     }}>Approve Rental</button>
+                                    <button className="button is-small is-danger" onClick={() => {
+                                        deleteRentalRequest(request).then(() => getRentalQueue().then(data => setRentalRequests(data)))
+                                    }}>Reject Rental</button>
                                 </section>
                                 : <section key={`item--${request.item.id}`} className="notification is-success p-3 has-text-weight-medium">
 

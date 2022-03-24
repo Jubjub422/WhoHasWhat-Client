@@ -3,7 +3,7 @@ import { getSingleItem, deleteItem } from "./ItemManager";
 import { Link, useParams } from 'react-router-dom'
 import { getCurrentLender } from "../users/UserManager";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { createRentalRequest } from "../homepage/RequestManager";
+import { createRentalRequest, getSingleRentalQueue } from "../homepage/RequestManager";
 
 
 export const ItemDetails = () => {
@@ -12,6 +12,8 @@ export const ItemDetails = () => {
     const parsedId = parseInt(itemId)
     const [currentUser, setCurrentUser] = useState({})
     const history = useHistory()
+    const [rentalQueue, setRentalQueue] = useState([])
+    const [buttonToggle, setButtonToggle] = useState(true)
 
 
 
@@ -22,6 +24,7 @@ export const ItemDetails = () => {
     }, [parsedId])
 
     const makeRentalRequest = (item) => {
+        setButtonToggle(false)
         const newRequest = {
             owner: parseInt(item.owner.id),
             item: parseInt(item.id),
@@ -30,9 +33,10 @@ export const ItemDetails = () => {
         }
         createRentalRequest(newRequest)
             .then(() => getSingleItem(parsedId).then(setItem))
+            
 
     }
-
+    
     return (
         <section key={`item--${item.id}`} className="notification is-success p-3 has-text-weight-medium">
             <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>
@@ -45,7 +49,7 @@ export const ItemDetails = () => {
                     <div>
                         <Link className="nav-link" to={`/items/${item.id}`}>Update Item?</Link>
                     </div>
-                    <button className="btn btn-2 btn-sep icon-create"
+                    <button className="button is-small is-danger"
                         onClick={() => {
                             deleteItem(item).then(history.push(`/items`))
                         }}
@@ -55,16 +59,18 @@ export const ItemDetails = () => {
             }
             {
                 item.owner !== currentUser ?
-                   
                     item.rented_currently === true ?
-                        <p>Item is currently rented!</p>
-                        : <button className="btn btn-2 btn-sep icon-create"
+                        <p className="has-background-info">Item is currently rented!</p>
+                        : buttonToggle ? 
+                        <button className="button is-small is-info"
                             onClick={() => {
                                 makeRentalRequest(item)
                             }}
                         >Place Rent Request?</button>
+                        : <p className="has-background-info">Rental request in progress</p>
                     : ""
-            }
+                           
+            }   
 
         </section>
     )
