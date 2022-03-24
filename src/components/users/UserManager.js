@@ -1,5 +1,5 @@
 export const getLenders = () => {
-    return fetch("http://localhost:8000/lenders", {
+    return fetch("https://who-has-what.herokuapp.com/lenders", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -8,7 +8,7 @@ export const getLenders = () => {
 }
 
 export const getSingleLender = (id) => {
-    return fetch(`http://localhost:8000/lenders/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/lenders/${id}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -17,7 +17,7 @@ export const getSingleLender = (id) => {
 }
 
 export const getCurrentLender = () => {
-    return fetch(`http://localhost:8000/lenders/current`, {
+    return fetch(`https://who-has-what.herokuapp.com/lenders/current`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -26,7 +26,7 @@ export const getCurrentLender = () => {
 }
 
 export const changeToOwner = (lender) => {
-    return fetch(`http://localhost:8000/lenders/${lender.id}/become_owner`, {
+    return fetch(`https://who-has-what.herokuapp.com/lenders/${lender.id}/become_owner`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`

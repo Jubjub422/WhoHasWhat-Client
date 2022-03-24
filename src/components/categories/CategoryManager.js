@@ -1,5 +1,5 @@
 export const getCategories = () => {
-    return fetch("http://localhost:8000/categories", {
+    return fetch("https://who-has-what.herokuapp.com/categories", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -8,7 +8,7 @@ export const getCategories = () => {
 }
 
 export const addCategory = categories => {
-    return fetch("http://localhost:8000/categories", {
+    return fetch("https://who-has-what.herokuapp.com/categories", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -20,7 +20,7 @@ export const addCategory = categories => {
 }
 
 export const updateCategory = (category, id) => {
-    return fetch(`http://localhost:8000/categories/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/categories/${id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -32,7 +32,7 @@ export const updateCategory = (category, id) => {
 }
 
 export const deleteCategory = categoryId => {
-    return fetch(`http://localhost:8000/categories/${categoryId}`, {
+    return fetch(`https://who-has-what.herokuapp.com/categories/${categoryId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -42,7 +42,7 @@ export const deleteCategory = categoryId => {
 };
 
 export const addItemCategory = categories => {
-    return fetch("http://localhost:8000/itemcategories", {
+    return fetch("https://who-has-what.herokuapp.com/itemcategories", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,

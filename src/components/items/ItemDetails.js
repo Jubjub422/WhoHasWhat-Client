@@ -3,7 +3,7 @@ import { getSingleItem, deleteItem } from "./ItemManager";
 import { Link, useParams } from 'react-router-dom'
 import { getCurrentLender } from "../users/UserManager";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { createRentalRequest, getSingleRentalQueue } from "../homepage/RequestManager";
+import { createRentalRequest } from "../homepage/RequestManager";
 
 
 export const ItemDetails = () => {
@@ -12,7 +12,6 @@ export const ItemDetails = () => {
     const parsedId = parseInt(itemId)
     const [currentUser, setCurrentUser] = useState({})
     const history = useHistory()
-    const [rentalQueue, setRentalQueue] = useState([])
     const [buttonToggle, setButtonToggle] = useState(true)
 
 

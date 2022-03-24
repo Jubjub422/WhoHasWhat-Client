@@ -1,5 +1,5 @@
 export const getConditions = () => {
-    return fetch("http://localhost:8000/conditions", {
+    return fetch("https://who-has-what.herokuapp.com/conditions", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -8,7 +8,7 @@ export const getConditions = () => {
 }
 
 export const addCondition = conditions => {
-    return fetch("http://localhost:8000/conditions", {
+    return fetch("https://who-has-what.herokuapp.com/conditions", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -20,7 +20,7 @@ export const addCondition = conditions => {
 }
 
 export const updateCategory = (condition, id) => {
-    return fetch(`http://localhost:8000/conditions/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/conditions/${id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -32,7 +32,7 @@ export const updateCategory = (condition, id) => {
 }
 
 export const deleteCategory = conditionId => {
-    return fetch(`http://localhost:8000/conditions/${conditionId}`, {
+    return fetch(`https://who-has-what.herokuapp.com/conditions/${conditionId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`

@@ -1,5 +1,5 @@
 export const getRentalQueue = () => {
-    return fetch("http://localhost:8000/rentalrequests", {
+    return fetch("https://who-has-what.herokuapp.com/rentalrequests", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -7,7 +7,7 @@ export const getRentalQueue = () => {
         .then(response => response.json())
 }
 export const getSingleRentalQueue = (id) => {
-    return fetch(`http://localhost:8000/rentalrequests/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/rentalrequests/${id}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -16,7 +16,7 @@ export const getSingleRentalQueue = (id) => {
 }
 
 export const createRentalRequest = (item) => {
-    return fetch("http://localhost:8000/rentalrequests", {
+    return fetch("https://who-has-what.herokuapp.com/rentalrequests", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -29,7 +29,7 @@ export const createRentalRequest = (item) => {
 
 
 export const updateRentalRequest = (item) => {
-    return fetch(`http://localhost:8000/rentalrequests/${item.id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/rentalrequests/${item.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -41,7 +41,7 @@ export const updateRentalRequest = (item) => {
 }
 
 export const deleteRentalRequest = (item) => {
-    return fetch(`http://localhost:8000/rentalrequests/${item.id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/rentalrequests/${item.id}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -51,7 +51,7 @@ export const deleteRentalRequest = (item) => {
 }
 
 export const approveRentalRequest = (request) => {
-    return fetch(`http://localhost:8000/rentalrequests/${request.id}/approve`, {
+    return fetch(`https://who-has-what.herokuapp.com/rentalrequests/${request.id}/approve`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -63,7 +63,7 @@ export const approveRentalRequest = (request) => {
 }
 
 export const returnRental = (request) => {
-    return fetch(`http://localhost:8000/rentalrequests/${request.id}/return_item`, {
+    return fetch(`https://who-has-what.herokuapp.com/rentalrequests/${request.id}/return_item`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,

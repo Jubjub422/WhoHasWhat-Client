@@ -1,5 +1,5 @@
 export const getItems = () => {
-    return fetch("http://localhost:8000/items", {
+    return fetch("https://who-has-what.herokuapp.com/items", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -7,7 +7,7 @@ export const getItems = () => {
         .then(response => response.json())
 }
 export const getSingleItem = (id) => {
-    return fetch(`http://localhost:8000/items/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/items/${id}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -16,7 +16,7 @@ export const getSingleItem = (id) => {
 }
 
 export const createItem = (item) => {
-    return fetch("http://localhost:8000/items", {
+    return fetch("https://who-has-what.herokuapp.com/items", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -29,7 +29,7 @@ export const createItem = (item) => {
 
 
 export const updateItem = (item, id) => {
-    return fetch(`http://localhost:8000/items/${id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/items/${id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -41,7 +41,7 @@ export const updateItem = (item, id) => {
 }
 
 export const deleteItem = (item) => {
-    return fetch(`http://localhost:8000/items/${item.id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/items/${item.id}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -51,7 +51,7 @@ export const deleteItem = (item) => {
 }
 
 export const getRentedItems = () => {
-    return fetch("http://localhost:8000/renteditems", {
+    return fetch("https://who-has-what.herokuapp.com/renteditems", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
@@ -60,7 +60,7 @@ export const getRentedItems = () => {
 }
 
 export const deleteRentedItem = (item) => {
-    return fetch(`http://localhost:8000/renteditems/${item.id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/renteditems/${item.id}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -70,7 +70,7 @@ export const deleteRentedItem = (item) => {
 }
 
 export const updateRentedItem = (item) => {
-    return fetch(`http://localhost:8000/renteditems/${item.id}`, {
+    return fetch(`https://who-has-what.herokuapp.com/renteditems/${item.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -82,7 +82,7 @@ export const updateRentedItem = (item) => {
 }
 
 export const createRentalItem = (item) => {
-    return fetch("http://localhost:8000/rentalitems", {
+    return fetch("https://who-has-what.herokuapp.com/rentalitems", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -94,7 +94,7 @@ export const createRentalItem = (item) => {
 }
 
 export const getItemsByCategory = (categoryId) => {
-    return fetch(`http://localhost:8000/items?category_id=${categoryId}`, {
+    return fetch(`https://who-has-what.herokuapp.com/items?category_id=${categoryId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
         }
