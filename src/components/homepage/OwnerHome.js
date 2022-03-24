@@ -24,8 +24,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
         })
         return ownerArray
     }
-    console.log(user)
-    console.log(rentalRequests)
+    
     const returnRentedItem = (request) => {
 
         returnRental(request)
