@@ -41,7 +41,7 @@ export const RenterHome = ({ items, rentedItems, user, setItems, setRentedItems 
                                 <div className="item__image"><img src={request.item.item_image} className="image is-128x128 mr-3"></img></div>
                                 <div className="item__name">{request.item.name}</div>
                                 <div className="item__condition">Condition level is {request.item.condition?.condition}</div>
-                                <div className="item__category"> Categorized as : {request.item.categories?.map(c => <span key={c.id}>{c.name}</span>).reduce((prev, curr) => [prev, ', ', curr])}</div>                                
+                                <div className="item__category"> Categorized as : {request.item.categories?.map(c => <span key={c.id}>{c.name}</span>).reduce((prev, curr) => [prev, ', ', curr])}</div>
                                 <button className="button is-small is-info"
                                     onClick={() => {
                                         returnRentedItem(request)

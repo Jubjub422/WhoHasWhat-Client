@@ -24,8 +24,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
         })
         return ownerArray
     }
-    console.log(user)
-    console.log(rentalRequests)
+
     const returnRentedItem = (request) => {
 
         returnRental(request)
@@ -44,8 +43,8 @@ export const OwnerHome = ({ items, user, setItems }) => {
                 ownerItems().length > 0 ?
                     ownerItems().map((item) => {
 
-                        return (<section key={`item--${item.id}`} className="notification is-success p-3 has-text-weight-medium">
-                            <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>                            
+                        return (<section key={`item--${item.id}`} className="notification is-success m-3 p-3 has-text-weight-medium">
+                            <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>
                             <div className="item__name">{item.name}</div>
                             <div className="item__prices">Item is currently rented? {item.rented_currently ? "Yes" : "No"}</div>
                             <div className="item__condition">Condition level is {item.condition?.condition}</div>
@@ -67,7 +66,7 @@ export const OwnerHome = ({ items, user, setItems }) => {
             </div>
         </section>
         <section className="column-is-one-third ml-6">
-            <h1 className="title is-4 is-success">These are the items currently rented from you.</h1>
+            <h1 className="title is-4 is-success m-3">These are the items currently rented from you.</h1>
             {
                 ownerItems().map((item) => {
                     if (item.rented_currently === true) {
@@ -85,8 +84,8 @@ export const OwnerHome = ({ items, user, setItems }) => {
 
         <section className="column-is-one-third ml-6">
 
-            <h1 className="title is-4 is-success">These are the items you currently have rented.</h1>
-            {
+            <h1 className="title is-4 is-success m-3">These are the items you currently have rented.</h1>
+            {rentalRequests.length < 0 ?
                 rentalRequests.map((request) => {
 
                     return (request.renter.user.id === user.user.id && request.returned === false ?
@@ -104,13 +103,14 @@ export const OwnerHome = ({ items, user, setItems }) => {
                         : "")
 
 
-                })
+
+                }) : <p className=" m-3">You have no rented items!</p>
             }
         </section>
 
 
         <section className="column-is-one-quarter ml-6">
-            <h3 className="title is-4 is-success">These Items have been requested to rent.</h3>
+            <h3 className="title is-4 is-success m-3">These Items have been requested to rent.</h3>
             {
                 rentalRequests.map((request) => {
                     return (request.owner.id === user.id ?
