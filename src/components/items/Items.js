@@ -48,7 +48,7 @@ export const ItemList = () => {
                 {
                     items.map(item => {
                         return (item.owner.user.id === user.id ? "" :
-                            <section key={`item--${item.id}`} className="notification is-success p-3 has-text-weight-medium">
+                            <section key={`item--${item.id}`} className="notification is-success p-3 m-3 has-text-weight-medium">
                                 <div className="item__image"><img src={item.item_image} className="image is-128x128 mr-3"></img></div>
                                 <div className="item__name"><Link to={`/items/${item.id}`}>{item.name}</Link> by {item?.owner?.user.first_name} {item?.owner?.user.last_name}</div>
                                 <div className="item__prices">{item.price_per_day} daily and {item.price_per_week} weekly</div>

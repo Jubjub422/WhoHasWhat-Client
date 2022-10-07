@@ -41,12 +41,22 @@ export const NavBar = () => {
           {
             localStorage.getItem('token')
               ?
+              currentUser.is_owner ?
               <>
                 <Link to="/items" className="navbar-item has-text-weight-semibold">Items</Link>
                 <Link to="/" className="navbar-item has-text-weight-semibold">Home</Link>
 
+                <Link className="navbar-item has-text-weight-semibold" to={`/items/create`}>Register New Item?</Link>
+
 
               </>
+              :<>
+              <Link to="/items" className="navbar-item has-text-weight-semibold">Items</Link>
+              <Link to="/" className="navbar-item has-text-weight-semibold">Home</Link>
+
+              
+
+            </>
               :
               ""
           }
